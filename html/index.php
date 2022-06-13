@@ -14,7 +14,7 @@
         }
     }
     if (!$isRouteFound) {
-         echo 'Тупорылая ошибка по тупому роуту ';
+         echo 'route not found /';
          echo $route;
          return;
     }

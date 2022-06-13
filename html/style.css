@@ -14,14 +14,24 @@
 
 .header {
     font-size: 30px;
+    text-align: center;
+}
+
+.article__title {
+    text-align: center;
 }
 
 .footer {
     text-align: center;
 }
 
+.comments__comment {
+
+}
+
 .sidebarHeader {
     font-size: 20px;
+    text-align: center;
 }
 
 .sidebar ul {

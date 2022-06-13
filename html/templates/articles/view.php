@@ -1,5 +1,5 @@
 <?php include __DIR__ . '/../header.html'; ?>
-    <h1><?= $article->getName() ?></h1>
+    <h1 class="article__title"><?= $article->getName() ?></h1>
     <p><?= $article->getText() ?></p>
     <hr>
 
@@ -8,7 +8,7 @@
     <ul>
         <?php
         foreach ($comments as $comment) {
-            echo "<li id='comment" . $comment->getId() . "'>" . $comment->getText() . " <a href='comments/" . $comment->getId() . "/edit'>Редактировать</a></li>";
+            echo "<li class='comments__comment' id='comment" . $comment->getId() . "'>" . $comment->getText() . " <a href='comments/" . $comment->getId() . "/edit'>Редактировать</a></li>";
         }
         ?>
     </ul>
