@@ -1,0 +1,70 @@
+#******************************************** #
+#                                             #
+#  By: david_zh   <david99111@mial.ru>        #
+#                                             #
+#  Created: 2022/03/01 11:39:30 by david_zh   #
+#  Updated: 2022/03/01 11:39:31 by david_zh   #
+#                                             #
+#******************************************** #
+
+version: '3.0'
+
+services:
+
+  nginx:
+    container_name: nginx
+    platform: linux/x86_64
+    image: nginx
+    environment:
+      - VIRTUAL_HOST=site.local
+    depends_on:
+      - php
+    volumes:
+      - ./docker/nginx/conf.d/default.nginx:/etc/nginx/conf.d/default.conf
+      - ./html/:/var/www/html/
+    networks:
+      - backend
+    ports:
+      - "8080:80"
+
+  php:
+    container_name: php
+    build:
+      context: ./docker/php
+    volumes:
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./html/:/var/www/html/
+    networks:
+      - backend
+
+  mysql:
+    container_name: mysql
+    platform: linux/x86_64
+    image: mysql:5.7
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - backend
+    ports:
+      - "3336:3306"
+
+
+  phpmyadmin:
+    platform: linux/x86_64
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+      - VIRTUAL_HOST=phpmyadmin.local
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    networks:
+      - backend
+    ports:
+      - "8081:80"
+
+
+networks:
+  backend:
