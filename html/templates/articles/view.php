@@ -8,7 +8,7 @@
     <ul>
         <?php
         foreach ($comments as $comment) {
-            echo "<li class='comments__comment' id='comment" . $comment->getId() . "'>" . $comment->getText() . " <a href='comments/" . $comment->getId() . "/edit'>Редактировать</a></li>";
+            echo "<li class='comments__comment' id='comment" . $comment->getId() . "'>" . $comment->getText() . " <a href='comments/" . $comment->getId() . "/edit'>Редактировать</a>.  <a href='comments/" . $comment->getId() . "/delete'>Удалить</a></li>";
         }
         ?>
     </ul>

@@ -3,6 +3,7 @@
         '~^/hello/(.*)$~' => [MyProject\Controllers\MainController::class, 'sayHello'],
         '~^$~' => [MyProject\Controllers\MainController::class, 'main'],
         '~.+/comments/(\d+)/edit~' => [MyProject\Controllers\CommentController::class, 'edit'],
+        '~.+/comments/(\d+)/delete~' => [MyProject\Controllers\CommentController::class, 'delete'],
         '~^/article/(\d)/comments/add~' => [MyProject\Controllers\CommentController::class, 'add'],
         '~^/article/(\d)/comments~' => [MyProject\Controllers\CommentController::class, 'view'],
         '~^/article/(\d+)/edit~' => [MyProject\Controllers\ArticleController::class, 'edit'],
